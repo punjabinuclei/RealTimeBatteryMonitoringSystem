@@ -1,5 +1,17 @@
 # RealTimeBatteryMonitoringSystem
 * Implementation of research papers with the goal of improving the existing system for monitoring batteries using machine learning and deep learning techniques.
+
+With the rise of electrification in various tech products, many countries are
+working towards optimizing the performance and safety of battery
+operated machines.
+Lithuim-ion battery is used widely. This wide usage is primarily because it is
+lighter, efficient, charge faster and have a longer lifespan than other.
+Practically, Li-ion batteries are susceptible to many conditions that can
+damage the battery pack.
+Thus a typical Battery Monitoring System (BMS) became a revolutionary
+component which has the capability to monitor and optimize various
+parameters like Current, Voltage, Temperature, concerned for the safety.
+
 ##  Dataset Details:
 https://data.mendeley.com/datasets/cp3473x7xv/3
 
