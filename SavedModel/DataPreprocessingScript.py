@@ -1,5 +1,8 @@
-import pandas as pd
-import numpy as np
+import pandas as pd # data processing
+import numpy as np # working with arrays
+
+# preprocessData------------------------------------------------------------------------------------
+from sklearn import preprocessing 
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 
@@ -7,20 +10,25 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score as r2_score 
+
+
+# Models
+#. Extreme Gradient Boosting--------
 import xgboost as xgb
 
 df = pd.read_csv("Test.csv")
 
 
-# # -----------------------------------------------------------Mean Calculation
+
+# # -----------------------------------------------------------Mean Calculation----------------------------------------------
 def sliding_window_mean(values, window_size):
     result = np.zeros(len(values) - window_size + 1)
     for i in range(len(result)):
         result[i] = np.mean(values[i:i+window_size])
     return result
 
-# # -----------------------------
-# # Select the column of interest
+# ---------------------------------------------------------------------
+# Select the column of interest
 column = df["Voltage"]
 
 window_size = 10
@@ -32,11 +40,11 @@ padding[:] = np.nan
 mean_values = np.concatenate((mean_values, padding))
 
 # Save the result to a new column in the DataFrame
-df["EcellMean"] = mean_values
+df["VMean"] = mean_values
 
-# # -----------------------------
+# ----------------------------------------------------------------------
 
-# # Select the column of interest
+# Select the column of interest
 column = df["Current"]
 
 window_size = 10
@@ -48,10 +56,10 @@ padding[:] = np.nan
 mean_values = np.concatenate((mean_values, padding))
 
 # Save the result to a new column in the DataFrame
-df["I_Mean"] = mean_values
+df["IMean"] = mean_values
 
-# # -------------------------------
-# # Select the column of interest
+# ----------------------------------------------------------------------
+# Select the column of interest
 column = df["Temperature"]
 
 window_size = 10
@@ -63,19 +71,12 @@ padding[:] = np.nan
 mean_values = np.concatenate((mean_values, padding))
 
 # Save the result to a new column in the DataFrame
-df["TemperatureMean"] = mean_values
-
-# print(df)
+df["TMean"] = mean_values
 
 
 
 
-
-# ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-# # ----------------------------------------------------------------------Median
+# # ----------------------------------------------------------------------Median------------------------------------------------
 
 def sliding_window_median(values, window_size):
     result = np.zeros(len(values) - window_size + 1)
@@ -83,10 +84,10 @@ def sliding_window_median(values, window_size):
         result[i] = np.median(values[i:i+window_size])
     return result
 
-# # ------------------------------
+# --------------------------------------------------------------
 
 
-# # Select the column of interest
+# Select the column of interest
 column = df["Voltage"]
 
 window_size = 10
@@ -98,13 +99,13 @@ padding[:] = np.nan
 median_values = np.concatenate((median_values, padding))
 
 # Save the result to a new column in the DataFrame
-df["EcellMedian"] = median_values
+df["VMedian"] = median_values
 
 
 
-# # ------------------------------
+# -----------------------------------------------------------
 
-# # Select the column of interest
+# Select the column of interest
 column = df["Current"]
 
 window_size = 10
@@ -116,12 +117,12 @@ padding[:] = np.nan
 median_values = np.concatenate((median_values, padding))
 
 # Save the result to a new column in the DataFrame
-df["ImaMedian"] = median_values
+df["IMedian"] = median_values
 df
 
 
-# # ----------------------------
-# # Select the column of interest
+# -------------------------------------------------------------------------------
+# Select the column of interest
 column = df["Temperature"]
 
 window_size = 10
@@ -133,13 +134,9 @@ padding[:] = np.nan
 median_values = np.concatenate((median_values, padding))
 
 # Save the result to a new column in the DataFrame
-df["TempMedian"] = median_values
-# print(df)
+df["TMedian"] = median_values
+df
 
-
-
-
-# -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 # # ------------------------------------------------------Standard Deviatoion------------------------------------
@@ -149,9 +146,9 @@ def sliding_window_stddev(values, window_size):
     for i in range(len(result)):
         result[i] = np.std(values[i:i+window_size])
     return result
-# # --------------------------------------------------
+# --------------------------------------------------
 
-# # Select the column of interest
+# Select the column of interest
 column = df["Voltage"]
 
 window_size = 10
@@ -163,13 +160,13 @@ padding[:] = np.nan
 stddev_values = np.concatenate((stddev_values, padding))
 
 # Save the result to a new column in the DataFrame
-df["Ecell_Vstd"] = stddev_values
+df["Vstd"] = stddev_values
 df
 
-# # --------------------------------------------------------
+# --------------------------------------------------------
 
 
-# # Select the column of interest
+# Select the column of interest
 column = df["Current"]
 
 window_size = 10
@@ -181,13 +178,13 @@ padding[:] = np.nan
 stddev_values = np.concatenate((stddev_values, padding))
 
 # Save the result to a new column in the DataFrame
-df["I_mA_std"] = stddev_values
+df["Istd"] = stddev_values
 df
 
 
-# # -----------------------------------------------------
+# -----------------------------------------------------
 
-# # Select the column of interest
+# Select the column of interest
 column = df["Temperature"]
 
 window_size = 10
@@ -199,24 +196,11 @@ padding[:] = np.nan
 stddev_values = np.concatenate((stddev_values, padding))
 
 # Save the result to a new column in the DataFrame
-df["TempStd"] = stddev_values
-# print(df)
+df["TStd"] = stddev_values
+df
 
 
-
-
-
-
-
-
-
-
-
-
-
-# -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-# # -------------------------------------------------------------Variance
+# # -------------------------------------------------------------Variance-----------------------------------------------------
 
 
 def sliding_window_variance(values, window_size):
@@ -226,9 +210,9 @@ def sliding_window_variance(values, window_size):
     return result
 
 
-# # -----------------------------------------------------------------
+# -----------------------------------------------------------------
 
-# # Select the column of interest
+# Select the column of interest
 column = df["Voltage"]
 
 window_size = 10
@@ -240,11 +224,11 @@ padding[:] = np.nan
 variance_values = np.concatenate((variance_values, padding))
 
 # Save the result to a new column in the DataFrame
-df["Ecell_Variance"] = variance_values
+df["VVariance"] = variance_values
 
-# # -------------------------------------------------------------------
+# -------------------------------------------------------------------
 
-# # Select the column of interest
+# Select the column of interest
 column = df["Current"]
 
 window_size = 10
@@ -256,11 +240,11 @@ padding[:] = np.nan
 variance_values = np.concatenate((variance_values, padding))
 
 # Save the result to a new column in the DataFrame
-df["I_mA_Variance"] = variance_values
+df["IVariance"] = variance_values
 
-# # 
+# ---------------------------------------------------------------------
 
-# # Select the column of interest
+# Select the column of interest
 column = df["Temperature"]
 
 window_size = 10
@@ -272,13 +256,13 @@ padding[:] = np.nan
 variance_values = np.concatenate((variance_values, padding))
 
 # Save the result to a new column in the DataFrame
-df["Temperature__C_Variance"] = variance_values
+df["TVariance"] = variance_values
 
 
 
-# # --------------------------------------------------------Power
+# --------------------------------------------------------Power--------------------------------------------------------
 
-# # Select the columns of interest
+# Select the columns of interest
 voltage_column = df["Voltage"]
 current_column = df["Current"]
 
@@ -290,10 +274,10 @@ df["Power"] = power_column
 df
 
 
-# # ---------------------------------------------------------Resistance
+# ---------------------------------------------------------Resistance--------------------------------------------------
 
 
-# # Select the columns of interest
+# Select the columns of interest
 voltage_column = df["Voltage"]
 current_column = df["Current"]
 
@@ -305,22 +289,22 @@ df["Resistance"] = resistance_column
 df
 
 
-# # ----------------------------------------------------------Conductance
+# ----------------------------------------------------------Conductance------------------------------------------------
 
 
 
 
 conductance_column = 1/resistance_column
 
-# # Save the result to a new column in the DataFrame
+# Save the result to a new column in the DataFrame
 df["Conductance"] = conductance_column
 df
 
 
 
 
-# ---------------------------------------------------------Temperature Differnce
-# # Select the column of interest
+# ---------------------------------------------------------Temperature Differnce---------------------------------------------
+# Select the column of interest
 temp_column = df["Temperature"]
 
 # Calculate the difference between consecutive rows
@@ -333,12 +317,7 @@ temp_change.iloc[0] = 0
 df["temp_change"] = temp_change
 df
 
-# print(df)
 
-
-
-
-# --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Replace inf values with NaN
 df.replace([np.inf, -np.inf], np.nan, inplace=True)
@@ -348,20 +327,33 @@ df.replace([np.inf, -np.inf], np.nan, inplace=True)
 # Remove rows containing NaN values
 df.dropna(inplace=True)
 
+df
 
-# Initialize the scaler
+
+# select all columns that contain 'Temp' in the name
+temp_change = [col for col in df.columns if 'temp_change' in col]
+df[temp_change] = df[temp_change].abs()
+df
+
+
+
+# separate the target variable (SOC) from the features
+X = df.drop('SOC', axis=1)
+y = df['SOC']
+
+# apply min-max scaling to the features only
 scaler = MinMaxScaler()
+X_scaled = pd.DataFrame(scaler.fit_transform(X), columns=X.columns)
 
-# Fit and transform the data
-df_scaled = scaler.fit_transform(df)
-
-# Put the transformed data back into a dataframe
-df = pd.DataFrame(df_scaled, columns=df.columns)
-
-
-# print(df)
+# combine the scaled features with the target variable
+df = pd.concat([X_scaled, y], axis=1)
+df
 
 
-# --------------------------------------------------------
-# df.drop('SOC', axis=1, inplace=True)
+# Assuming the dataframe is named "df"
+df = df[['Voltage', 'Current'] + [col for col in df.columns if col not in ['Voltage', 'Current']]]
+
+
+
+
 df.to_csv('data.csv', index=False)
