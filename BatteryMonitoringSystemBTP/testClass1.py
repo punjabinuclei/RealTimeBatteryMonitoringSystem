@@ -36,7 +36,7 @@ class SensorDataLogger:
         while True:
             voltage = self.chan_voltage.voltage
             voltage = (voltage) / 0.2
-            voltage -= 0.5
+            voltage -= 0.4
             SOC = (voltage - 9.0) / 2.3 * 100.0
             
             current_sum = 0
@@ -47,7 +47,7 @@ class SensorDataLogger:
                 current_sum += current
                 time.sleep(0.01)
             current_avg = current_sum / self.CURRENT_SAMPLES
-            current_avg += 3.56
+            current_avg += 3.46
 
             temp_sum = 0
             for i in range(self.TEMP_SAMPLES):
@@ -70,5 +70,5 @@ class SensorDataLogger:
             time.sleep(0.1)
 
 
-logger = SensorDataLogger('dataSensor2.csv')
-logger.start()
+# logger = SensorDataLogger('dataSensor2.csv')
+# logger.start()
