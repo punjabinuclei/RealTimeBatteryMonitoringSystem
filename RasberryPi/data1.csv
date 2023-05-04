@@ -1,3 +1,0 @@
-Voltage,Current,Temperature,VMean,IMean,TMean,VMedian,IMedian,TMedian,Vstd,Istd,TStd,VVariance,IVariance,TVariance,Power,Resistance,Conductance,temp_change,SOC
-0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.3877787807814457e-17,0.0,0.0,1.734723475976807e-18,0.9999999999999999,0.0,0.9999999999999999,0.0,248.20561008961613
-0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,1.0,248.20561008961613
