@@ -4,21 +4,6 @@
 
 Every battery-operated device, including electric cars, smartphones, drones, etc., typically has a battery monitoring system (BMS) attached. This system's primary responsibility is to control battery levels and keep track of a battery's State of Charge and State of Health. These systems currently rely on the Kalman Filter, Coulomb Counting, and Voltage Measurement to estimate the state of charge, but these systems have some limitations. A thorough literature review revealed that the traditional systems' hysteresis—a condition in which a system's output is delayed and causes a certain amount of measurement error—can affect the performance of current algorithms. Additionally, these hardware circuits can now use sensors to capture the dynamic environment of the real-world condition. Because heat has a major impact on battery capacity, temperature of a battery is a crucial parameter that is neglected in traditional methods. This project focuses on a thorough analysis of 9 regression algorithms based on the accuracy of the results and execution time of the algorithms to get faster predictions. From this analysis, Extreme Gradient Boosting was found to be the robust algorithm providing the accurate results in less than few seconds, which is what machine learning is used for.  Following this, the model was implemented on an in-house hardware system made with the aid of sensors and microcontrollers. Utilizing three evaluation metrics, including RMSE, MAE, and R-Squared Error, the analysis was conducted on two distinct datasets to better capture the nonlinearity in the data set. Additionally, the circuit was tested on a drone with a single motor, two motors, and then three motors, and data was collected to simulate the conditions in real life. The results of using these data to train and implement the online prediction were quite promising. The results were subsequently examined in order to determine the degree of error for various charging states as well as the lack of training datasets. The errors were quite high at certain charging levels. However, there is always room for improvement.   **Keywords:** Machine Learning, Deep Learning, Neural Networks, Battery Monitoring System, State of Charge, Evaluation Metrics, Coulomb Counting
 
-# **Acknowledgement**
-
-We want to sincerely thank everyone who helped finish this report by expressing my gratitude. First of all, we want to express my gratitude to Dr. Jagat Rath (Assistant Professor, Department of Mechanical and Aero-Space Engineering (IITRAM)) my supervisor, for their direction, encouragement, and feedback throughout the project. Their knowledge and opinions were extremely helpful in determining the project’s course.
-
-Additionally, we want to thank Dr. Ajit Kumar for his assistance and insightful criticism. Their suggestions and insights helped the report's quality. We also want to be recognized for our efforts due to the dedication to the project and careful research that contributed to its completion.
-
-Finally, we would like to express our gratitude to IITRAM, Ahmedabad, for giving us this wonderful opportunity and resources as well as to all of our friends who contributed significantly to the success of this project.
-
-**Tathya Bhatt**
-
-**Gurpreet Singh**
-
-Department of Mechanical and Aerospace Engineering
-
-IITRAM, Ahmedabad
 
 # **List of Figures**
 
