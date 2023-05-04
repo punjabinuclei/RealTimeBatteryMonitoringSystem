@@ -1,4 +1,4 @@
-# **Real Time Battery Monitoring System USing MAchine Learning and Deep Learning**  
+# **Real Time Battery Monitoring System Using Machine Learning and Deep Learning**  
 
 # **Abstract**
 
