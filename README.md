@@ -1,7 +1,13 @@
-Introducing our Real-Time Battery Monitoring System, a game-changing technology that utilizes machine learning algorithms to predict the state of charge of batteries in real-time. Our system was initially developed for the drone industry, but we quickly realized that its potential applications were limitless. By collecting and analyzing data on voltage, current, temperature, and other relevant features, our machine learning model accurately predicts the remaining charge of a battery, ensuring that it is operating at maximum capacity.
+# Battery Management System (BMS) Project
 
-Our team has continuously worked to improve the performance of the system. We updated the dataset with higher data points, non-linear data, and added more features to train our model on. We also explored nine algorithms and conducted a comprehensive analysis to determine the best training ratio and evaluation metrics. After comparing execution times and accuracy, the Xtreme Gradient Boosting algorithm emerged as the most accurate.
+This repository contains code and scripts related to our Battery Management System (BMS) project, which includes data collection, real-time prediction, and monitoring. 
 
-In addition, we built a robust BMS module and optimized the prediction time to just 40 seconds. We also recognized the potential to use our system in various battery-operated projects, and to this end, we collected our own data to expand the system's dataset.
+## Project Overview
 
-Overall, our Real-Time Battery Monitoring System has the potential to revolutionize battery-powered technology in industries such as aviation, electric vehicles, and renewable energy. With its high accuracy and versatile applications, our system is poised to make a significant impact on the world's transition to sustainable energy sources
+Our BMS project aims to streamline battery management by leveraging simple sensors and machine learning. It consists of three main components:
+
+- **ArduinoCodeToFCollectData:** This folder contains Arduino code for collecting battery data.
+
+- **BMS/RealTimePredictionScripts:** Here, you'll find scripts for real-time battery health prediction.
+
+- **RasberryPiCodeToCollectData:** Raspberry Pi code for data collection is stored in this folder.
