@@ -1,7 +1,5 @@
 # Battery Management System (BMS) Project
 
-This repository contains code and scripts related to our Battery Management System (BMS) project, which includes data collection, real-time prediction, and monitoring. 
-
 ## Table of Contents
 1. Introduction
 2. Code Structure
@@ -12,3 +10,5 @@ This repository contains code and scripts related to our Battery Management Syst
 7. Setup Instructions
 8. Contributing
 9. License
+
+###1. Introduction
